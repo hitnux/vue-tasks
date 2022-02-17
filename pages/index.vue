@@ -1,8 +1,6 @@
 <template>
   <main class="min-h-87vh max-w-75 m-auto">
-    Test
     <Table :items="tasks" />
-    <div> {{users}} </div>
   </main>
 </template>
 
@@ -22,7 +20,7 @@ export default Vue.extend({
         return {
           id: ind,
           name: `test${ind}`,
-          state: 'new',
+          state: ind == 3 ? 'Development' : 'New',
           assigned: 2,
           date: new Date()
         }
