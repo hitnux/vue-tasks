@@ -6,8 +6,8 @@
       @click="() => {
         tasks.push( {
           id: Math.floor(Math.random() * 10 + 6),
-          name: `new item`,
-          state: 'Completed',
+          name: `new item ${Math.floor(Math.random() * 10)}`,
+          state: 'New',
           assigned: 2,
           date: new Date()
         } )
@@ -42,7 +42,7 @@ export default Vue.extend({
         return {
           id: ind+1,
           name: `test-${ind+1}`,
-          state: ind == 3 ? 'Development' : 'New',
+          state: ind == 2 ? 'Development' : ind == 4 ? 'Completed' : 'New',
           assigned: 2,
           date: new Date()
         }
