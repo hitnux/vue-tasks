@@ -3,7 +3,17 @@
         <ul class="border flex flex-col">
             <li class="px-4 py-1 border-b last:border-b-0"> 
                 <div class="flex justify-between">
-                    <div class="w-1/6"> ID </div>
+                    <div class="w-1/6">
+                        ID 
+                        <button
+                            @click="() => {
+                                clickSort(sorted);
+                                sorted = !sorted;
+                            }"
+                            :class="(sorted ? 'rotate-270' : 'rotate-90')">
+                            >
+                        </button> 
+                    </div>
                     <div class="w-2/6"> Title </div>
                     <div class="w-1/6"> Assigned </div>
                     <div class="w-1/6"> State </div>
@@ -26,6 +36,11 @@
 <script>
 import Vue from 'vue'
 export default Vue.extend({
+    data() {
+        return {
+            sorted: false
+        }
+    },
     props: {
         items: {
             type: Array,
@@ -33,6 +48,9 @@ export default Vue.extend({
                 return []
             },
             //required: true
+        },
+        clickSort: {
+            type: Function
         }
     },
     methods: {

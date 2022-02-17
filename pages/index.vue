@@ -5,7 +5,7 @@
       <button 
       @click="() => {
         tasks.push( {
-          id: Math.floor(Math.random() * 10 + 5),
+          id: Math.floor(Math.random() * 10 + 6),
           name: `new item`,
           state: 'Completed',
           assigned: 2,
@@ -15,7 +15,13 @@
         + New Task
       </button>
     </div>
-    <Table :items="tasks.filter( t => t.name.includes(search) )" />
+    <Table 
+      :items="tasks.filter( t => t.name.includes(search) )" 
+      :clickSort="(active) => {
+        if (active) tasks.sort( (a,b) => {return a.id - b.id} )
+        else tasks.sort( (a,b) => {return b.id - a.id} )
+      }" 
+      />
   </main>
 </template>
 
@@ -34,8 +40,8 @@ export default Vue.extend({
       search: '',
       tasks: [...Array(5)].map((_, ind) => {
         return {
-          id: ind,
-          name: `test-${ind}`,
+          id: ind+1,
+          name: `test-${ind+1}`,
           state: ind == 3 ? 'Development' : 'New',
           assigned: 2,
           date: new Date()

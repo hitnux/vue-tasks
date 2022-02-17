@@ -16,6 +16,9 @@ module.exports = {
       height: {
         '8' : '8px',
         '32' : '32px'
+      },
+      rotate: {
+        '270' : '270deg'
       }
     },
     maxWidth: {
