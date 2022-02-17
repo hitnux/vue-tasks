@@ -1,8 +1,5 @@
 <template>
     <div>
-        <div class="">
-            <input type="text" v-model="search" class="border mb-3" />
-        </div>
         <ul class="border flex flex-col">
             <li class="px-4 py-1 border-b last:border-b-0"> 
                 <div class="flex justify-between">
@@ -13,7 +10,7 @@
                     <div class="w-1/6"> Created Date </div>
                 </div>
             </li>
-            <li v-for="(item, ind) in items.filter( t => t.name.includes(search) )" :key="ind" class="px-4 py-1 border-b last:border-b-0"> 
+            <li v-for="(item, ind) in items" :key="ind" class="px-4 py-1 border-b last:border-b-0"> 
                 <div class="flex justify-between items-center">
                     <div class="w-1/6"> {{ item.id }} </div>
                     <div class="w-2/6"> {{ item.name }} </div>
@@ -29,11 +26,6 @@
 <script>
 import Vue from 'vue'
 export default Vue.extend({
-    data() {
-        return {
-            search: ''
-        }
-    },
     props: {
         items: {
             type: Array,
